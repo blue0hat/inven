@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<br>
+
+    <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table style="width: 100%;" id="example"
+                    class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid"
+                    aria-describedby="example_info">
+                    <thead class="table-dark">
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                                style="width: 208.2px;" aria-sort="ascending"
+                                aria-label="Name: activate to sort column descending">Type
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                                style="width: 320.2px;" aria-label="Position: activate to sort column ascending">
+                                Part
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                                style="width: 152.2px;" aria-label="Office: activate to sort column ascending">Part Number
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                                style="width: 85.2px;" aria-label="Age: activate to sort column ascending">Part ID
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                                style="width: 158.2px;" aria-label="Start date: activate to sort column ascending">Status
+                                date
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                                style="width: 121.2px;" aria-label="Salary: activate to sort column ascending">Last Change
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for part in parts %}
+                        <tr role="row" style="font-size: 15px; font-weight: bold;" class="{% if part.status == "USED" %}table-danger{% elif part.status == "SENT" %}table-warning{% endif %}">
+                            <td class="sorting_1 dtr-control">{{ part.type }}</td>
+                            <td>{{ part.part }}</td>
+                            <td>{{ part.partnum }}</td>
+                            <td>{{ part.partid }}</td>
+                            <td>{{ part.status }}</td>
+                            <td>{{ part.changed_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
